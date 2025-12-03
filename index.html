@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8" />
+<title>Зачётка</title>
+<style>
+  body { margin: 0; padding: 0; }
+  .container { position: relative; width: 100vw; height: 100vh; overflow: hidden; }
+  .container img { width: 100%; height: 100%; object-fit: cover; }
+
+  #gradeSelect {
+    position: absolute;
+    top: 5%;
+    right: 5%;
+    background: rgba(255,255,255,0.85);
+    padding: 20px 25px;
+    border-radius: 16px;
+    font-size: 24px;
+    z-index: 1000;
+  }
+
+  .grade-display {
+    position: absolute;
+    top: 68%;
+    left: 80%;
+    transform: translate(-50%, -50%);
+    font-size: 40px;
+    color: red;
+    font-family: 'Georgia', serif;
+    font-weight: bold;
+  }
+</style>
+</head>
+<body>
+<div id="gradeSelect">
+  <div>Выбрать оценку</div>
+  <select id="selector">
+    <option value="">—</option>
+    <option value="2">2</option>
+    <option value="3">3</option>
+    <option value="4">4</option>
+    <option value="5">5</option>
+  </select>
+</div>
+<div class="container">
+  <img src="photo.png" style="width:100%; height:auto; display:block;" />
+
+</div>
+<script>
+  const sel = document.getElementById('selector');
+  sel.addEventListener('change', ()=>{
+    if (!sel.value) return;
+    document.querySelector('.container img').src = `photo${sel.value}.png`;
+  });
+</script>
+</body>
+</html>
